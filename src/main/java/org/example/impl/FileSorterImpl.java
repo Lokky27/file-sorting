@@ -34,6 +34,11 @@ public class FileSorterImpl implements FileSorter {
         return lines;
     }
 
+    /**
+     * Метод производит сортировку с ипользованием Stream API и Comparator.comparing(a, b)
+     * @param parsedContent - лист строк полученных из файла
+     * @return отсоритированный лист строк
+     */
     @Override
     public List<String> sortFileContent(List<String> parsedContent) {
 
