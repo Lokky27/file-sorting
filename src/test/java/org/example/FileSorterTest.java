@@ -11,14 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FileSorterTest {
 
-    private static String pathToFile;
     private static List<String> expectedLines;
     private static List<String> sortedExpectedLines;
     private static FileSorter sorter;
 
     @BeforeAll
     public static void init(){
-        pathToFile = "src/main/resources/testfile.txt";
+        String pathToFile = "src/main/resources/testfile.txt";
         expectedLines = List.of(
                 "Зимование рыбы - в прудовом хозяйстве, сохранение в течение зимы производителей и молоди рыб в специально оборудованных зимовальных прудах.",
                 "Хилодон -  род простейших подкласса равноресничных инфузорий. Несколько видов — свободноживущие обитатели пресных вод; широко распространен Ch. cyprini — эктопаразит пресноводных рыб, обитающий на жабрах и коже; в СССР встречается в центральной, западной и северо-западной областях Европейской части, а также в Западной Сибири и Алтайском крае. Массовое развитие Х. (при недостаточном питании рыб) вызывает тяжёлое заболевание — хилодонеллёз, приводящее иногда к гибели рыб. Оптимальная температура для развития Х. 5—10°C.",

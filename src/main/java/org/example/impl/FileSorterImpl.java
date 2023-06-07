@@ -3,13 +3,19 @@ package org.example.impl;
 import org.example.FileSorter;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Имплементация интерфейса FileSorter
+ */
 public class FileSorterImpl implements FileSorter {
+    /**
+     * Строковая переменная обозначающая путь до файла
+     */
     private final String pathToFile;
 
     public FileSorterImpl(String pathToFile) {
@@ -17,12 +23,15 @@ public class FileSorterImpl implements FileSorter {
     }
 
     @Override
-    public List<String> parseFile() throws IOException {
-        Path path = Paths.get(pathToFile);
-        return Files
-                .lines(path)
-                .collect(Collectors.toList());
-
+    public List<String> parseFile() {
+        List<String> lines = new ArrayList<>();
+        try {
+            lines = Files.readAllLines(Paths.get(pathToFile), StandardCharsets.UTF_8);
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        return lines;
     }
 
     @Override
@@ -34,7 +43,14 @@ public class FileSorterImpl implements FileSorter {
     }
 
     @Override
-    public int getLinesOfFile() throws IOException {
-        return Files.readAllLines(Paths.get(pathToFile)).size();
+    public int getLinesOfFile() {
+        int linesOfFile = 0;
+        try{
+            linesOfFile = Files.readAllLines(Paths.get(pathToFile)).size();
+        }
+        catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        return linesOfFile;
     }
 }
